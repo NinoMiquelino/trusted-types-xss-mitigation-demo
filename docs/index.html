@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusted Types Demo</title>
+    
+    <!-- Carrega Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carrega DOMPurify, essencial para a sanitização na política Trusted Types -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    
+    <!-- Configuração de Estilo -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        #output-console {
+            min-height: 80px;
+            overflow-x: auto;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+    </style>   
+</head>
+<body class="selection:bg-green-100 selection:text-green-800">
+
+    <div class="w-full max-w-2xl bg-white shadow-2xl rounded-xl p-6 md:p-8 space-y-6">
+        <h1 class="text-3xl font-bold text-gray-800 border-b-2 pb-2 border-green-500">
+            🔒 Trusted Types: Demonstração de Segurança
+        </h1>
+        
+        <div class="p-3 bg-red-50 border-l-4 border-red-500 text-sm text-red-800 rounded">
+            <p><strong>ATENÇÃO:</strong> O Trusted Types só é ativado pelo navegador quando é enviado via **Cabeçalho HTTP**. A tag <code>&lt;meta&gt;</code> NÃO funciona para esta diretiva.</p>
+            <p class="mt-2">Para ver o bloqueio (`TypeError`) ocorrer, configure o seu servidor (ou Live Server) com o cabeçalho:</p>
+            <code class="block font-mono mt-1 p-1 bg-red-100 rounded">Content-Security-Policy: require-trusted-types-for 'script'; default-src 'self';</code>
+        </div>
+
+        <!-- Área de Saída DOM -->
+        <div class="p-4 rounded-lg border border-dashed border-gray-300 bg-gray-50">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Resultado da Atribuição ao DOM</h2>
+            <div id="output-area" class="text-sm text-gray-500 italic min-h-[50px]">
+                Aguardando execução...
+            </div>
+        </div>
+        
+        <!-- Console de Erros/Log -->
+        <div class="space-y-2">
+            <h2 class="text-lg font-semibold text-gray-700">Console da Aplicação (Log)</h2>
+            <pre id="output-console" class="bg-gray-800 text-white p-3 rounded-md text-xs font-mono">
+Aguardando...
+            </pre>
+        </div>
+        
+        <!-- Botões de Ação -->
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 pt-4 border-t border-gray-200">
+            <button id="btn-erro" class="w-full md:w-1/2 px-4 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition duration-150 shadow-lg shadow-red-200">
+                1. 💥 Demonstração de ERRO (innerHTML Inseguro)
+            </button>
+
+            <button id="btn-correto" class="w-full md:w-1/2 px-4 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-150 shadow-lg shadow-green-200">
+                2. ✅ Demonstração CORRETA (Trusted HTML e Sanitização)
+            </button>
+        </div>
+        
+        <div class="text-xs text-gray-400 pt-4 border-t border-gray-100">
+            <p><strong>Payload de Teste:</strong> <code>&lt;img src=x onerror=alert('XSS-Injetado') style='border: 1px solid red;'&gt;</code></p>
+        </div>
+
+    </div>
+
+    <!-- Carrega o script JavaScript -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
