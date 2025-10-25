@@ -21,7 +21,8 @@
 ![GitHub forks](https://img.shields.io/github/forks/NinoMiquelino/password-strength-checker?style=social)
 ![GitHub issues](https://img.shields.io/github/issues/NinoMiquelino/password-strength-checker)
 
-​💻 **Visão Geral do Projeto**
+​## 💻 **Visão Geral do Projeto**
+
 ​Este projeto é uma demonstração prática de como a diretiva Trusted Types, parte do Content Security Policy (CSP) Level 3, pode ser usada para mitigar vulnerabilidades de Cross-Site Scripting (XSS) persistente e refletido em aplicações web modernas.
 
 ​Ele ilustra o princípio de quebrar a cadeia de confiança ao exigir que todos os valores atribuídos a sinks de DOM perigosos (como innerHTML) sejam objetos "Trusted" e não strings arbitrárias.
