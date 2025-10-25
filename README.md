@@ -23,15 +23,15 @@
 
 ---
 
-​## 💻 **Visão Geral do Projeto**
+## 💻 Visão Geral do Projeto
 
-​Este projeto é uma demonstração prática de como a diretiva Trusted Types, parte do Content Security Policy (CSP) Level 3, pode ser usada para mitigar vulnerabilidades de Cross-Site Scripting (XSS) persistente e refletido em aplicações web modernas.
+Este projeto é uma demonstração prática de como a diretiva **Trusted Types**, parte do Content Security Policy (CSP) Level 3, pode ser usada para mitigar vulnerabilidades de **Cross-Site Scripting (XSS)** persistente e refletido em aplicações web modernas.
 
-​Ele ilustra o princípio de quebrar a cadeia de confiança ao exigir que todos os valores atribuídos a sinks de DOM perigosos (como innerHTML) sejam objetos "Trusted" e não strings arbitrárias.
+Ele ilustra o princípio de quebrar a cadeia de confiança ao exigir que todos os valores atribuídos a **sinks de DOM perigosos** (como `innerHTML`) sejam objetos "Trusted" e não strings arbitrárias.
 
-​A demonstração utiliza a biblioteca DOMPurify como um sanitizer confiável para transformar código HTML potencialmente inseguro em um objeto TrustedHTML, permitindo sua atribuição segura.
+A demonstração utiliza a biblioteca **DOMPurify** como um sanitizer confiável para transformar código HTML potencialmente inseguro em um objeto `TrustedHTML`, permitindo sua atribuição segura.
 
-​❗ Nota Crítica: O bloqueio por Trusted Types só é ativado quando o cabeçalho HTTP Content-Security-Policy: require-trusted-types-for 'script'; é enviado pelo servidor.
+❗ **Nota Crítica:** O bloqueio por Trusted Types só é ativado quando o cabeçalho HTTP `Content-Security-Policy: require-trusted-types-for 'script';` é enviado pelo servidor.
 
 ---
 
